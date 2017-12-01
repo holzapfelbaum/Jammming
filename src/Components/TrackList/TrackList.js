@@ -15,3 +15,5 @@ class TrackList extends React.Component {
     )
   }
 }
+
+export default TrackList;
