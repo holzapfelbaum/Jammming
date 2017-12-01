@@ -6,9 +6,9 @@ class App extends React.Component {
       super(props);
       this.state = {
         searchResults: [
-          name = {};
-          artist = {};
-          properties = {};
+          name = {},
+          artist = {},
+          album = {}
         ]
       }
   }
