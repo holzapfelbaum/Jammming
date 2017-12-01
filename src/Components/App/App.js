@@ -19,7 +19,25 @@ class App extends React.Component {
           artist = {},
           album = {}
         ]
+      };
+      this.addTrack = this.addTrack.bind(this);
+  }
+
+  async function addTrack(track) {
+    try {
+      let response = await fetch ('url', {
+        method: 'POST'
+      });
+      if (response.ok) {
+        let jsonResponse = await response.json;
+        if (track.id === this.state.playlistTracks) {
+          $TrackList.append(track);
+          this.setState({track: track});
       }
+      throw new Error ('Request failed!');
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   render() {
@@ -29,7 +47,7 @@ class App extends React.Component {
         <div className="App">
           <SearchBar />
           <div className="App-playlist">
-            <SearchResults searchResults={this.state.searchResults} />
+            <SearchResults searchResults={this.state.searchResults} onAdd={this.addTrack} />
             <Playlist playlistName={this.state.playlistName} playlistTracks={this.state.playlistTracks} />
           </div>
         </div>
