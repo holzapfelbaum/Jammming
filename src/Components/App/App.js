@@ -15,20 +15,10 @@ class App extends React.Component {
       this.addTrack = this.addTrack.bind(this);
   }
 
-  async function addTrack(track) {
-    try {
-      let response = await fetch ('url', {
-        method: 'POST'
-      });
-      if (response.ok) {
-        let jsonResponse = await response.json;
-        if (track.id === this.state.playlistTracks) {
-          $TrackList.append(track);
-          this.setState({track: track});
-      }
-      throw new Error ('Request failed!');
-    } catch (error) {
-      console.log(error);
+  addTrack(track) {
+    if (track.id !== this.state.playlistTracks) {
+      this.state.playlistTracks.append(track);
+      this.setState({playlistTracks: playlistTracks});
     }
   }
 
