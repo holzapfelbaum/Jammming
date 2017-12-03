@@ -6,6 +6,14 @@ class Track extends React.Component {
     super(props);
   }
 
+  renderAction() {
+    if ({isRemoval}) {
+      return +
+    } else {
+      return -
+    }
+  }
+
   render() {
     <div className="Track">
       <div className="Track-information" track={track}>
@@ -13,13 +21,7 @@ class Track extends React.Component {
         <p>{this.props.track.artist} | {this.props.track.album}</p>
       </div>
       <a className="Track-action">
-        {renderAction() {
-          if ({isRemoval}) {
-            return +
-          } else {
-            return -
-          }
-        }}
+        {this.renderAction}
       </a>
     </div>
   }
