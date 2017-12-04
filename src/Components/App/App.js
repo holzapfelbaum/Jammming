@@ -21,17 +21,17 @@ class App extends React.Component {
 
   addTrack(track) {
     let tracks = this.state.playlistTracks;
-    if (this.state.playlistTracks.track.id != track) {
+    if (this.state.playlistTracks.indexOf(track) === -1) {
       tracks = tracks.push(track);
-      this.setState({playlistTracks: track});
+      this.setState({playlistTracks: tracks});
     }
   }
 
   removeTrack(track) {
     let tracks = this.state.playlistTracks;
-    if (this.state.playlistTracks.track.id == track) {
-      this.state.playlistTracks.filter(track => track != track.id); // filter should be the correct method; while it does not change the original array, I have created a new array that does not include the id of the track we want to remove (track.id)
-      this.setState({playlistTracks: tracks});
+    if (tracks.indexOf(track) > -1) { // since -1 means track is not present, if indexOf is greater than -1, track will be required to be in array
+      tracks.filter(currentTrack => currentTrack != track.id);
+      this.setState({playlistTracks: tracks})
     }
   }
 
