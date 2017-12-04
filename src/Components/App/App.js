@@ -9,8 +9,8 @@ class App extends React.Component {
   constructor(props) {
       super(props);
       this.state = {
-        searchResults: this.Spotify.search(),
-        playlistName: 'New Playlists',
+        searchResults: [],
+        playlistName: 'New Playlist',
         playlistTracks: []
       };
       this.addTrack = this.addTrack.bind(this);
@@ -41,7 +41,8 @@ class App extends React.Component {
   }
 
   savePlaylist() {
-    playlistTracks.trackURI.from();
+    playlistTracks.trackUri.from();
+    Spotify.savePlaylist();
   }
 
   search(term) {
