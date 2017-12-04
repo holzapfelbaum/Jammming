@@ -45,7 +45,7 @@ const Spotify = {
     }
   },
 
-  savePlaylist(this.props.playlistName, track.uri[]) { // this entire method is one HUGE guess...I had no idea where to even begin
+  savePlaylist(this.props.playlistName, track.uri[]) { 
     if (!this.props.playlistName && !track.uri[]) {
       return;
     }
