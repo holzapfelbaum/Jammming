@@ -22,8 +22,8 @@ const Spotify = {
     }
   },
 
-  async function search(term) {
-    return fetch(`https://api.spotify.com/v1/search?type=track&q=${term}`, {
+  search(term) {
+    return fetch(`https://api.spotify.com/v1/search?type=track&q=${term}`, { // term
         headers: {
           'Authorization': `Bearer ${accessToken}`
         }
