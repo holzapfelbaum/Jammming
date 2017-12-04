@@ -20,16 +20,18 @@ class App extends React.Component {
   }
 
   addTrack(track) {
-    if (this.state.playlistTracks !== track) {
-      this.state.playlistTracks.push(track.id);
+    let tracks = this.state.playlistTracks;
+    if (this.state.playlistTracks.track.id != track) {
+      tracks = tracks.push(track);
       this.setState({playlistTracks: track});
     }
   }
 
   removeTrack(track) {
-    if (this.state.playlistTracks === track) {
-      this.state.playlistTracks.filter(track => track !== track.id); // filter should be the correct method; while it does not change the original array, I have created a new array that does not include the id of the track we want to remove (track.id)
-      this.setState({playlistTracks: track});
+    let tracks = this.state.playlistTracks;
+    if (this.state.playlistTracks.track.id == track) {
+      this.state.playlistTracks.filter(track => track != track.id); // filter should be the correct method; while it does not change the original array, I have created a new array that does not include the id of the track we want to remove (track.id)
+      this.setState({playlistTracks: tracks});
     }
   }
 
