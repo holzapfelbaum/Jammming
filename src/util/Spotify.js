@@ -43,6 +43,30 @@ const Spotify = {
         }
       });
     }
+  },
+
+  savePlaylist(this.props.playlistName, track.uri[]) { // this entire method is one HUGE guess...I had no idea where to even begin
+    if (!this.props.playlistName && !track.uri[]) {
+      return;
+    }
+    let accessToken = `${accessToken}`;
+    let headers = {
+      'Authorization': `Bearer ${accessToken}`
+    }
+    let userId = '';
+    return fetch(`https://api.spotify.com/v1/me`, {headers: headers}).then(response => {
+      return response.json();
+    }).then(jsonResponse => {
+      response.id = userId;
+    }).then(await fetch (`https://api.spotify.com//v1/users/${userId}/${this.props.playlistName}`, {
+      headers: headers,
+      method: 'POST',
+      body: JSON.stringify({name: this.props.playlistName})
+    }).then(response => {
+      return response.json();
+    }).then(jsonResponse => {
+      response.id = playlistID;
+    }))
   }
 };
 
