@@ -38,6 +38,8 @@ const Spotify = {
             album: track.album.name,
             uri: track.uri
           }));
+        } else {
+          return [];
         }
       });
     }
