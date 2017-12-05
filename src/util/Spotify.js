@@ -66,7 +66,7 @@ const Spotify = {
   ).then(jsonResponse => {
       const playlistId = jsonResponse.id;
     })
-  })
-}
+  })}
+};
 
 export default Spotify;
