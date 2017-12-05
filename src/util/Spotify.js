@@ -42,11 +42,10 @@ const Spotify = {
           return [];
         }
       });
-    }
-  },
+    },
 
-  savePlaylist(this.props.playlistName, track.uri[]) { 
-    if (!this.props.playlistName && !track.uri[]) {
+  savePlaylist(playlistname, trackuris) {
+    if (!playlistname && !trackuris.length) {
       return;
     }
     let accessToken = `${accessToken}`;
@@ -58,14 +57,14 @@ const Spotify = {
       return response.json();
     }).then(jsonResponse => {
       response.id = userId;
-    }).then(await fetch (`https://api.spotify.com//v1/users/${userId}/${this.props.playlistName}`, {
+    }).then(return fetch (`https://api.spotify.com/v1/users/${userId}/playlists/${playlistId}/tracks`, {
       headers: headers,
       method: 'POST',
-      body: JSON.stringify({name: this.props.playlistName})
+      body: JSON.stringify({name: playlistname})
     }).then(response => {
       return response.json();
     }).then(jsonResponse => {
-      response.id = playlistID;
+      playlistId = response.id;
     }))
   }
 };
