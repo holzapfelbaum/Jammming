@@ -1,5 +1,5 @@
 const clientId = '6b3dd77d6ce241e1b4360459df1397ea';
-const redirectUri = 'http://jammmingjon.surge.sh';
+const redirectUri = 'https://jammmingjon.surge.sh';
 let accessToken = '';
 
 const Spotify = {
@@ -18,6 +18,7 @@ const Spotify = {
       return accessToken;
     } else {
       const accessUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUri}`;
+      //                                              authorize?client_id=6b3dd77d6ce241e1b4360459df1397ea&response_type=token&scope=playlist-modify-public&redirect_uri=http://jammmingjon.surge.sh
       window.location = accessUrl; // in line above, we set the accessUrl according to Spotify's requirements; now, we set the url the user will be sent to as that accessUrl using window.location
     }
   },
