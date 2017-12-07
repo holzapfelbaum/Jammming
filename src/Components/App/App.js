@@ -31,7 +31,7 @@ class App extends React.Component {
   removeTrack(track) {
     let tracks = this.state.playlistTracks;
     if (tracks.indexOf(track) > -1) { // since -1 means track is not present, if indexOf is greater than -1, track will be required to be in array
-      tracks.filter(currentTrack => currentTrack != track.id);
+      tracks.filter(currentTrack => currentTrack != track.id); // warning: "Expected '!==' and instead saw '!='"
       this.setState({playlistTracks: tracks})
     }
   }
@@ -50,7 +50,9 @@ class App extends React.Component {
   }
 
   search(term) {
-    Spotify.search(term);
+    const promise = Spotify.search(term);
+    // Update the state of searchResults with the value resolved from Spotify.search()'s promise.
+    this.setState({searchResults: promise});
   }
 
   render() {
