@@ -1,5 +1,5 @@
 const clientId = '6b3dd77d6ce241e1b4360459df1397ea';
-const redirectUri = 'https://jammmingjon.surge.sh';
+const redirectUri = 'http://localhost:3000/';
 let accessToken = '';
 
 const Spotify = {
@@ -65,7 +65,7 @@ const Spotify = {
       body: JSON.stringify({playlistname: playlistname})
     }).then(response => response.json()
   ).then(jsonResponse => {
-      const playlistId = jsonResponse.id;
+      const playlistId = jsonResponse.id; // playlistId is assigned a value but never used
     })
   })}
 };
