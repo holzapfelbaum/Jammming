@@ -23,7 +23,7 @@ class App extends React.Component {
   addTrack(track) {
     let tracks = this.state.playlistTracks;
     if (this.state.playlistTracks.indexOf(track) === -1) {
-      tracks = tracks.push(track);
+      tracks.push(track);
       this.setState({playlistTracks: tracks});
     }
   }
