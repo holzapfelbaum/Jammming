@@ -50,9 +50,9 @@ class App extends React.Component {
   }
 
   search(term) {
-    const promise = Spotify.search(term);
-    // Update the state of searchResults with the value resolved from Spotify.search()'s promise.
-    this.setState({searchResults: promise});
+    Spotify.search(term).then(searchResults => {
+      this.setState({searchResults: promise}); // Update the state of searchResults with the value resolved from Spotify.search()'s promise.
+    });
   }
 
   render() {
