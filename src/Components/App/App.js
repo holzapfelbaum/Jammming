@@ -30,7 +30,7 @@ class App extends React.Component {
 
   removeTrack(track) {
     let tracks = this.state.playlistTracks;
-    if (tracks.indexOf(track) > -1) { // since -1 means track is not present, if indexOf is greater than -1, track will be required to be in array
+    if (this.state.playlistTracks.indexOf(track) > -1) { // since -1 means track is not present, if indexOf is greater than -1, track will be required to be in array
       tracks.filter(currentTrack => currentTrack !== track.id); // warning: "Expected '!==' and instead saw '!='"
       this.setState({playlistTracks: tracks})
     }
