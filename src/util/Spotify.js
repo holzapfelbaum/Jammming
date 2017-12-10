@@ -46,8 +46,8 @@ const Spotify = {
       });
     },
 
-  savePlaylist(playlistname, trackuris) {
-    if (!playlistname && !trackuris.length) {
+  savePlaylist(playlistName, trackuris) {
+    if (!playlistName || !trackuris.length) {
       return;
     }
     const accessToken = Spotify.getAccessToken();
@@ -62,7 +62,7 @@ const Spotify = {
       return fetch (`https://api.spotify.com/v1/users/${userId}/playlists/`, {
       headers: headers,
       method: 'POST',
-      body: JSON.stringify({playlistname: playlistname})
+      body: JSON.stringify({playlistName: playlistName})
     }).then(response => response.json()
   ).then(jsonResponse => {
       const playlistId = jsonResponse.id; // playlistId is assigned a value but never used
