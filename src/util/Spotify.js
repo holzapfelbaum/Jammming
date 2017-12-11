@@ -59,6 +59,10 @@ const Spotify = {
       return response.json();
     }).then(jsonResponse => {
       userId = jsonResponse.id;
+      headers = {
+        'Authorization': `Bearer ${accessToken}`,
+        'Content-Type': 'application/json'
+      }
       return fetch (`https://api.spotify.com/v1/users/${userId}/playlists`, {
       headers: headers,
       method: 'POST',
