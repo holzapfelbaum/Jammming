@@ -46,27 +46,27 @@ const Spotify = {
       });
     },
 
-  savePlaylist(playlistName, trackuris) {
-    if (!playlistName || !trackuris.length) {
+  savePlaylist(playlistName, trackUris) {
+    if (!playlistName || !trackUris.length) {
       return;
     }
     const accessToken = Spotify.getAccessToken();
     let headers = {
       'Authorization': `Bearer ${accessToken}`
-    }
+    };
     let userId = '';
     return fetch(`https://api.spotify.com/v1/me`, {headers: headers}).then(response => {
       return response.json();
     }).then(jsonResponse => {
       userId = jsonResponse.id;
-      return fetch (`https://api.spotify.com/v1/users/${userId}/playlists/`, {
+      return fetch (`https://api.spotify.com/v1/users/${userId}/playlists`, {
       headers: headers,
       method: 'POST',
-      body: JSON.stringify({playlist_name: playlistName})
+      body: JSON.stringify({playlistName: playlistName})
     }).then(response => response.json()
   ).then(jsonResponse => {
-      const playlistId = jsonResponse.id; // playlistId is assigned a value but never used
-      return fetch (`https://api.spotify.com/v1/users/${user_id}/playlists/${playlistId}/tracks`, {
+      const playlistId = jsonResponse.id;
+      return fetch (`https://api.spotify.com/v1/users/${userId}/playlists/${playlistId}/tracks`, {
         headers: headers,
         method: 'POST',
         body: JSON.stringify({uris: trackUris})
