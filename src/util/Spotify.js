@@ -66,7 +66,7 @@ const Spotify = {
         return response.json(); // Added GET playlists functionality
       }).then(jsonResponse => { // Added GET playlists functionality
         let currentPlaylists = jsonResponse.map(jsonResponse.items.playlist.name); // Added GET playlists functionality
-        if  (currentPlaylists.indexOf === -1) { // // Added redirect user if matching name found functionality
+        if (currentPlaylists.indexOf(playlistName) > -1) { // // Added redirect user if matching name found functionality
           return prompt('Playlist Name Already Taken'); // Added redirect user if matching name found functionality
         } else { // Original Jammming functionality
           headers = {
