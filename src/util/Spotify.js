@@ -56,14 +56,14 @@ const Spotify = {
     };
     let queryParameter = {
       'limit': 50
-    }
+    };
     let userId = '';
     return fetch(`https://api.spotify.com/v1/me`, {headers: headers}).then(response => {
       return response.json();
     }).then(jsonResponse => {
       userId = jsonResponse.id;
       return fetch(`https://api.spotify.com/v1/me/playlists`, {headers: headers, queryParameter: queryParameter}).then(response => { // Added GET playlists functionality
-        return response.json(); // Added GET playlists functionality
+        return response.json();}); // Added GET playlists functionality
       }).then(jsonResponse => { // Added GET playlists functionality
         let currentPlaylists = jsonResponse.map(jsonResponse.items.playlist.name); // Added GET playlists functionality
         if (currentPlaylists.indexOf(playlistName) > -1) { // // Added redirect user if matching name found functionality
@@ -72,7 +72,7 @@ const Spotify = {
           headers = {
             'Authorization': `Bearer ${accessToken}`,
             'Content-Type': 'application/json'
-          }
+          };
           return fetch (`https://api.spotify.com/v1/users/${userId}/playlists`, {
           headers: headers,
           method: 'POST',
@@ -84,10 +84,11 @@ const Spotify = {
           headers: headers,
           method: 'POST',
           body: JSON.stringify({uris: trackUris})
-        })
-      })
+        });
+      });
     }
   }
-}
+  );
+}};
 
 export default Spotify;
