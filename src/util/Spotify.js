@@ -54,11 +54,20 @@ const Spotify = {
     let headers = {
       'Authorization': `Bearer ${accessToken}`
     };
+    let queryParameter = {
+      'limit': 50
+    }
     let userId = '';
     return fetch(`https://api.spotify.com/v1/me`, {headers: headers}).then(response => {
       return response.json();
     }).then(jsonResponse => {
       userId = jsonResponse.id;
+      return fetch(`https://api.spotify.com/v1/me/playlists`, {headers: headers, queryParameter: queryParameter}).then(response => { // Added GET playlists functionality
+        return response.json(); // Added GET playlists functionality
+      }).then(jsonResponse => { // Added GET playlists functionality
+        let currentPlaylists = jsonResponse.map(items.playlist.name) // Added GET playlists functionality
+        }) // Added GET playlists functionality
+      }) // Added GET playlists functionality
       headers = {
         'Authorization': `Bearer ${accessToken}`,
         'Content-Type': 'application/json'
@@ -69,14 +78,19 @@ const Spotify = {
       body: JSON.stringify({name: playlistName})
     }).then(response => response.json()
   ).then(jsonResponse => {
-      const playlistId = jsonResponse.id;
-      return fetch (`https://api.spotify.com/v1/users/${userId}/playlists/${playlistId}/tracks`, {
-        headers: headers,
-        method: 'POST',
-        body: JSON.stringify({uris: trackUris})
-      })
+      let playlistNameMatch = for (currentPlaylists[i]; i < currentPlaylists.length - 1; i++) // Added redirect user if matching name found functionality
+      if (playlistNameMatch === playlistName) { // Added redirect user if matching name found functionality
+        return prompt('Playlist Name Already Taken!'); // Added redirect user if matching name found functionality
+      } else { // Added redirect user if matching name found functionality
+        const playlistId = jsonResponse.id;
+        return fetch (`https://api.spotify.com/v1/users/${userId}/playlists/${playlistId}/tracks`, {
+          headers: headers,
+          method: 'POST',
+          body: JSON.stringify({uris: trackUris})
+        })
+      }
     })
-  })}
-};
+  }}
+}
 
 export default Spotify;
