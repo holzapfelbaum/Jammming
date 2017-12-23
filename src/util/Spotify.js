@@ -65,7 +65,7 @@ const Spotify = {
       return fetch(`https://api.spotify.com/v1/me/playlists`, {headers: headers, queryParameter: queryParameter}).then(response => { // Added GET playlists functionality
         return response.json();}); // Added GET playlists functionality
       }).then(jsonResponse => { // Added GET playlists functionality
-        let currentPlaylists = jsonResponse.map(items => items.name); // Added GET playlists functionality
+        let currentPlaylists = jsonResponse.items.map(items => items.name); // Added GET playlists functionality
         if (currentPlaylists.indexOf(playlistName) > -1) { // // Added redirect user if matching name found functionality
           return prompt('Playlist Name Already Taken'); // Added redirect user if matching name found functionality
         } else { // Original Jammming functionality
